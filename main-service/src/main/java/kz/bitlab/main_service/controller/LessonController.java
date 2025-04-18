@@ -19,31 +19,26 @@ public class LessonController {
 
     @PostMapping("/lesson")
     public ResponseEntity<LessonDto> createLesson(@RequestBody LessonDto lesson) {
-        log.info("Create lesson: {}", lesson.getName());
         return  ResponseEntity.ok(lessonService.addLesson(lesson));
     }
 
     @GetMapping("/lesson/{id}")
     public ResponseEntity<LessonDto> getLessonById(@PathVariable Long id) {
-        log.info("Get lesson: {}", id);
         return  ResponseEntity.ok(lessonService.getLessonById(id));
     }
 
     @GetMapping("/lessons")
     public List<LessonDto> getAllLessons() {
-        log.info("Get all lessons");
         return lessonService.getAllLessons();
     }
 
     @PutMapping("/lesson/{id}")
     public ResponseEntity<LessonDto> updateLesson(@PathVariable Long id, @RequestBody LessonDto lesson) {
-        log.info("Update lesson: {}", lesson.getName());
         return  ResponseEntity.ok(lessonService.updateLesson(id, lesson));
     }
 
     @DeleteMapping("/lesson/{id}")
     public ResponseEntity<String> deleteLesson(@PathVariable Long id) {
-        log.info("Delete lesson: {}", id);
         return ResponseEntity.ok(lessonService.deleteLesson(id));
     }
 

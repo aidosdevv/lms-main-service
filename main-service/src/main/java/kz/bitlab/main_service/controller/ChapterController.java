@@ -19,14 +19,11 @@ public class ChapterController {
 
     @PostMapping("/chapter")
     public ResponseEntity<ChapterDto> createChapter(@RequestBody ChapterDto chapterDto) {
-        log.info("Creating chapter: {}", chapterDto.getName());
-        log.debug("Chapter: {}", chapterDto);
         return ResponseEntity.ok(chapterService.addChapter(chapterDto));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ChapterDto> getChapter(@PathVariable Long id) {
-        log.info("Getting chapter: {}", id);
         return ResponseEntity.ok(chapterService.getChapterById(id));
     }
 
@@ -34,20 +31,17 @@ public class ChapterController {
     public ResponseEntity<ChapterDto> updateChapter(
             @PathVariable Long id,
             @RequestBody ChapterDto chapterDto) {
-        log.info("Updating chapter: {}", id);
         return ResponseEntity.ok(chapterService.updateChapter(id, chapterDto));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteChapter(@PathVariable Long id) {
-        log.info("Deleting chapter: {}", id);
         String str = chapterService.deleteChapter(id);
         return ResponseEntity.ok(str);
     }
 
     @GetMapping("/chapters")
     public ResponseEntity<List<ChapterDto>> getAllChapters() {
-        log.info("Getting all chapters");
         return ResponseEntity.ok(chapterService.getAllChapters());
     }
 }
